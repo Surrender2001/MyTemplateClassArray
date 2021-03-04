@@ -13,8 +13,8 @@ int main()
 	arr.Show();
 	arr.push_back(5);
 	arr.Show();
-
-
+	arr.deleteMin();
+	arr.Show();
 	return 0;
 	
 }
