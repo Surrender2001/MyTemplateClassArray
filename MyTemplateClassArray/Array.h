@@ -36,18 +36,20 @@ class Array
         void Fill()
         {
             srand(time(nullptr));
-            for each (auto var in data)
-            var.data = rand()%10;
+            for (auto i = 0; i < length; i++)
+            {
+                data[i] = rand()%10;
+            }
+            
             
         }
 
         void Show()
         {
-            if (length!=0)
-                for each (auto var in data)
-                {
-                    cout << data << endl;
-                }
+            if (length != 0)
+                for (auto i = 0; i < length; i++)
+                    cout << data[i] <<"\t";
+            cout << "\n";
         }
 
         void Erase()
@@ -58,7 +60,17 @@ class Array
             length = 0;
         }
 
-
+        void push_back(T value)
+        {
+            T* NewArray = new T[length + 1];
+            for (int i = 0; i < length; i++)
+            {
+                NewArray[i] = data[i];
+            }
+            NewArray[length++] = value;
+            delete[]data;
+            data = NewArray;
+        }
         
 
         int getLength(); 

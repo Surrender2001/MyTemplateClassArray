@@ -4,13 +4,17 @@ using namespace std;
 
 
 
-void main()
+int main()
 {
 
 
 	Array<int> arr(10);
-	
+	arr.Fill();
+	arr.Show();
+	arr.push_back(5);
+	arr.Show();
 
 
+	return 0;
 	
 }
