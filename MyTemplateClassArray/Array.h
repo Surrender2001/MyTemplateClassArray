@@ -1,6 +1,9 @@
 #pragma once
-#include<ctime>
+#include<ctime>;
+#include<iostream>
+using namespace std;
 template <class T> 
+
 class Array
     {
     private:
@@ -32,9 +35,9 @@ class Array
 
         void Fill()
         {
-            srand();
+            srand(time(nullptr));
             for each (auto var in data)
-            var.data = rand(time(nullptr));
+            var.data = rand()%10;
             
         }
 
