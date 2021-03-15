@@ -1,6 +1,7 @@
 #pragma once
 #include<ctime>;
 #include<iostream>
+#include<math.h>
 using namespace std;
 template <class T> 
 class Array
@@ -8,7 +9,7 @@ class Array
     private:
         int length;
         T* data;
-
+        bool _filled;
     public:
         Array()
         {
@@ -39,8 +40,14 @@ class Array
             {
                 data[i] = rand()%10;
             }
+            _filled = true;
             
-            
+        }
+
+        void Power3()
+        {
+            if (!_filled) throw exception("Ёто пустой массив! “упой???"); 
+            for (auto i = 0; i < length; i++)data[i] = pow(data[i], 3); 
         }
 
         void Show()
@@ -57,10 +64,13 @@ class Array
             // ѕрисваиваем значение nullptr дл€ data, чтобы на выходе не получить вис€чий указатель!
             data = nullptr;
             length = 0;
+            _filled = false;
         }
 
         void push_back(T value)
         {
+            if (_filled)throw exception("Ќу не судьба добавить еще :)");
+
             T* NewArray = new T[length + 1];
             for (int i = 0; i < length; i++)
             {
@@ -105,6 +115,7 @@ class Array
         //delete the first element
         void delete_the_first()
         {
+            if (!_filled)throw exception("ну Ќ≈Ћ№«я удалить элемент в пустом массиве!!!");
             int* NewArray = new int[--length];
             for (int i = 0; i < length; i++)
             {
