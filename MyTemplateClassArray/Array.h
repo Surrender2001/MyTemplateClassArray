@@ -10,11 +10,42 @@ class Array
         T* data;
 
     public:
+        class Iterator
+        {
+            T* cur;
+        public:
+            Iterator(T* first)
+            {
+                cur=first;
+            }
+            T& operator+(int n) { return *(cur + n); }
+            T& operator-(int n) { return *(cur - n); }
+
+            T& operator++(int) { return *cur++; }
+            T& operator--(int) { return *cur--; }
+            T& operator++() { return *++cur; }
+            T& operator--() { return *--cur; }
+
+            bool operator !=(const Iterator& it) { return cur != it.cur; }
+            bool operator ==(const Iterator& it) { return cur == it.cur; }
+
+            /*T& operator=(T& cur2) { cur=cur2; }*/
+
+            T& operator* () { return *cur; }
+           
+        
+        
+        };
+
+        Iterator begin() { return data; }
+        Iterator end() { return data+length; }
+
         Array()
         {
             length = 0;
             data = nullptr;
         }
+
 
         Array(int length)
         {
